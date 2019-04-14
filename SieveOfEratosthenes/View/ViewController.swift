@@ -13,23 +13,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var calculationButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let iPresenter: IPresenter = Presenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
 
     @IBAction func calculationButtonTapped(_ sender: UIButton) {
+        let userInput = inputTextField.text ?? ""
+        iPresenter.checkInputed(numberFrom: userInput)
     }
 }
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return iPresenter.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PrimeCell", for: indexPath)
+        
+        return cell
     }
 }
 
+extension ViewController: UITextFieldDelegate {
+    
+}
