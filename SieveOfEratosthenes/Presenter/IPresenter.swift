@@ -6,9 +6,11 @@
 //  Copyright © 2019 Georgy Dyagilev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol IPresenter: AnyObject {
     func numberOfItems() -> Int
     func checkInputed(numberFrom stringNumber: String)
+    func primeNumberFor(index: Int) -> UInt
+    func sizeForItemAt(_ indexPath: IndexPath) -> CGSize
 }

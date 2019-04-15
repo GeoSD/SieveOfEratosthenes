@@ -8,5 +8,5 @@
 
 import Foundation
 struct PrimeNumber {
-    let primeNumber: Int
+    let primeNumber: UInt
 }

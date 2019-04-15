@@ -15,7 +15,8 @@
 		6689553322636F690014C1B7 /* PrimeNunber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689553222636F690014C1B7 /* PrimeNunber.swift */; };
 		6689553522636F9A0014C1B7 /* IPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689553422636F9A0014C1B7 /* IPresenter.swift */; };
 		6689553722636FA70014C1B7 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689553622636FA70014C1B7 /* Presenter.swift */; };
-		66895539226373400014C1B7 /* PrimeNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66895538226373400014C1B7 /* PrimeNumberCollectionViewCell.swift */; };
+		66895539226373400014C1B7 /* PrimeNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66895538226373400014C1B7 /* PrimeNumberCell.swift */; };
+		66A6173022638CE300D90DC0 /* PrimeNumberCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66A6172F22638CE300D90DC0 /* PrimeNumberCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +30,8 @@
 		6689553222636F690014C1B7 /* PrimeNunber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNunber.swift; sourceTree = "<group>"; };
 		6689553422636F9A0014C1B7 /* IPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPresenter.swift; sourceTree = "<group>"; };
 		6689553622636FA70014C1B7 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		66895538226373400014C1B7 /* PrimeNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		66895538226373400014C1B7 /* PrimeNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNumberCell.swift; sourceTree = "<group>"; };
+		66A6172F22638CE300D90DC0 /* PrimeNumberCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrimeNumberCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				6644F781226364B0003319BC /* ViewController.swift */,
-				66895538226373400014C1B7 /* PrimeNumberCollectionViewCell.swift */,
+				66895538226373400014C1B7 /* PrimeNumberCell.swift */,
+				66A6172F22638CE300D90DC0 /* PrimeNumberCell.xib */,
 				6644F783226364B0003319BC /* Main.storyboard */,
 				6644F788226364B6003319BC /* LaunchScreen.storyboard */,
 			);
@@ -168,6 +171,7 @@
 			files = (
 				6644F78A226364B6003319BC /* LaunchScreen.storyboard in Resources */,
 				6644F787226364B6003319BC /* Assets.xcassets in Resources */,
+				66A6173022638CE300D90DC0 /* PrimeNumberCell.xib in Resources */,
 				6644F785226364B0003319BC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +186,7 @@
 				6689553522636F9A0014C1B7 /* IPresenter.swift in Sources */,
 				6644F782226364B0003319BC /* ViewController.swift in Sources */,
 				6644F780226364B0003319BC /* AppDelegate.swift in Sources */,
-				66895539226373400014C1B7 /* PrimeNumberCollectionViewCell.swift in Sources */,
+				66895539226373400014C1B7 /* PrimeNumberCell.swift in Sources */,
 				6689553322636F690014C1B7 /* PrimeNunber.swift in Sources */,
 				6689553722636FA70014C1B7 /* Presenter.swift in Sources */,
 			);

@@ -53,19 +53,7 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USY-LC-85L">
-                                                    <rect key="frame" x="22.5" y="14.5" width="5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="USY-LC-85L" firstAttribute="centerY" secondItem="zIn-cx-xf2" secondAttribute="centerY" id="c4s-xb-aq9"/>
-                                            <constraint firstItem="USY-LC-85L" firstAttribute="centerX" secondItem="zIn-cx-xf2" secondAttribute="centerX" id="phv-cX-Fzh"/>
-                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
