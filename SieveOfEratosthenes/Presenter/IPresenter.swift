@@ -11,6 +11,6 @@ import UIKit
 protocol IPresenter: AnyObject {
     func numberOfItems() -> Int
     func checkInputed(numberFrom stringNumber: String)
-    func primeNumberFor(index: Int) -> UInt
+    func primeNumberFor(index: Int) -> Int
     func sizeForItemAt(_ indexPath: IndexPath) -> CGSize
 }

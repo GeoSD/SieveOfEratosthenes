@@ -1,5 +1,5 @@
 //
-//  PrimeNunber.swift
+//  PrimeNumber.swift
 //  SieveOfEratosthenes
 //
 //  Created by Georgy Dyagilev on 14/04/2019.
@@ -8,5 +8,5 @@
 
 import Foundation
 struct PrimeNumber {
-    let primeNumber: UInt
+    let primeNumber: Int
 }

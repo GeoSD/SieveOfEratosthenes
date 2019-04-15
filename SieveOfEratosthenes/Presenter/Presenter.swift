@@ -9,16 +9,19 @@
 import UIKit
 
 class Presenter {
-    private var inputNumber: UInt = 0
+    private var inputNumber: Int = 0
+    private var sievedNumbers: [Int] = []
+    private var primeNubers: [PrimeNumber] = []
     
     private func calculationOfPrimeNumbers() {
-        
+        sievedNumbers.removeAll()
+        sievedNumbers = Array(repeating: 1, count: inputNumber)
     }
 }
 
 extension Presenter: IPresenter {
-    func primeNumberFor(index: Int) -> UInt {
-        return UInt.max
+    func primeNumberFor(index: Int) -> Int {
+        return Int.max
 //        return 1
     }
     
@@ -27,12 +30,12 @@ extension Presenter: IPresenter {
     }
     
     func checkInputed(numberFrom stringNumber: String) {
-        guard let inputNumber = UInt(stringNumber) else { return }
+        guard let inputNumber = Int(stringNumber) else { return }
         self.inputNumber = inputNumber
     }
     
     func sizeForItemAt(_ indexPath: IndexPath) -> CGSize {
-        let someStringSize = String(UInt.max).size(withAttributes: nil)
+        let someStringSize = String(Int.max).size(withAttributes: nil)
 //        let someStringSize = "1".size(withAttributes: nil)
         let calculatedWidth = someStringSize.width + 60
         let calculatedHeight = someStringSize.height + 20
