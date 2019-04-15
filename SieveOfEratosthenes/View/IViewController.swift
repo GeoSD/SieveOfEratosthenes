@@ -9,5 +9,5 @@
 import Foundation
 
 protocol IViewController: AnyObject {
-    func reloadCollectionView()
+    func setNumbersWith(primeNumbers: [PrimeNumber])
 }

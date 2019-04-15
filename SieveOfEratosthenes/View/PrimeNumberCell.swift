@@ -10,9 +10,7 @@ import UIKit
 
 class PrimeNumberCell: UICollectionViewCell {
     @IBOutlet private weak var primeNumberLabel: UILabel!
-    
-    private let iPresenter: IPresenter = Presenter()
-    
+
     override func awakeFromNib() {
         configureCellUI()
     }
@@ -23,8 +21,7 @@ class PrimeNumberCell: UICollectionViewCell {
         layer.borderColor = UIColor.black.cgColor
     }
     
-    func configureCell(with indexPath: IndexPath) {
-        let index = indexPath.row
-        primeNumberLabel.text = String(iPresenter.primeNumberFor(index: index))
+    func configureCell(with primeNumber: PrimeNumber) {
+        primeNumberLabel.text = "\(primeNumber)"
     }
 }

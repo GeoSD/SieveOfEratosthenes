@@ -12,4 +12,7 @@ extension Int {
     func sqr() -> Int {
         return self * self
     }
+    func asPrimeNumber() -> PrimeNumber {
+        return PrimeNumber(primeNumber: self)
+    }
 }

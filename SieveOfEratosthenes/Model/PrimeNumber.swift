@@ -7,6 +7,13 @@
 //
 
 import Foundation
+
 struct PrimeNumber {
     let primeNumber: Int
+}
+
+extension PrimeNumber: CustomStringConvertible {
+    var description: String {
+        return "\(primeNumber)"
+    }
 }
