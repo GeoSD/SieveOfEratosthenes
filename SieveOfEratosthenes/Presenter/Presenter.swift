@@ -11,11 +11,16 @@ import UIKit
 class Presenter {
     private var inputNumber: Int = 0
     private var sievedNumbers: [Int] = []
-    private var primeNubers: [PrimeNumber] = []
+    private var primeNubers: [Int] = []
     
     private func calculationOfPrimeNumbers() {
         sievedNumbers.removeAll()
         sievedNumbers = Array(repeating: 1, count: inputNumber)
+        for i in 2...(2 * inputNumber + 1) {
+            if sievedNumbers[i] == 1 {
+                
+            }
+        }
     }
 }
 
