@@ -11,6 +11,7 @@ import Foundation
 class PrimeNumberService {
     func calculatePrimeNumbers(_ inputNumber: Int, result: ([PrimeNumber]) -> Void) {
         var sievedNumbers = Array(0...inputNumber)
+        
         var primeNumbers: [PrimeNumber] = []
         sievedNumbers[0] = 0
         sievedNumbers[1] = 0
@@ -31,8 +32,8 @@ class PrimeNumberService {
                 primeNumbers.append(PrimeNumber(primeNumber: number))
             }
         }
-        print(sievedNumbers)
-        print(primeNumbers)
+//        print(sievedNumbers)
+//        print(primeNumbers)
         result(primeNumbers)
     }
 }

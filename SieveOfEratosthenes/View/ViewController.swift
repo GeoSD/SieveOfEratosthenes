@@ -29,8 +29,7 @@ class ViewController: UIViewController {
     
     private func configureCollectionView() {
         collectionView.backgroundColor = .clear
-        collectionView.register(UINib(nibName: String(describing: PrimeNumberCell.self), bundle: nil),
-                                forCellWithReuseIdentifier: "PrimeCell")
+        collectionView.register(UINib(nibName: String(describing: PrimeNumberCell.self), bundle: nil), forCellWithReuseIdentifier: "PrimeCell")
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -42,7 +41,12 @@ class ViewController: UIViewController {
     
     @IBAction private func calculationButtonTapped(_ sender: UIButton) {
         let userInput = inputTextField.text ?? ""
-        iPresenter.calculatePrimeNumbers(from: userInput)
+        if iPresenter.ifOkWith(userInput) {
+            iPresenter.calculatePrimeNumbers(from: userInput)
+        } else {
+            showAlert()
+            return
+        }
     }
 }
 
@@ -63,11 +67,11 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let index = indexPath.row
         let stringNumber = "\(primeNumbers[index])"
         let someStringSize = stringNumber.size(withAttributes: nil)
-        let calculatedWidth = someStringSize.width + 40
+        let calculatedWidth = someStringSize.width + 20
         let calculatedHeight = someStringSize.height + 20
         let sizeForItem = CGSize(width: calculatedWidth, height: calculatedHeight)
         
@@ -75,13 +79,24 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UITextFieldDelegate {
-    
-}
+extension ViewController: UITextFieldDelegate { }
 
 extension ViewController: IViewController {
     func setNumbersWith(primeNumbers: [PrimeNumber]) {
         self.primeNumbers = primeNumbers
         collectionView.reloadData()
+    }
+}
+
+extension ViewController {
+    func showAlert() {
+        let alert = UIAlertController(title: "", message: "Вы ввели неподходящее число! Введите число больше 1..", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.primeNumbers = []
+            self.inputTextField.text = ""
+            self.collectionView.reloadData()
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }

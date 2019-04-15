@@ -10,5 +10,6 @@ import UIKit
 
 protocol IPresenter: AnyObject {
     func setIViewController(iViewController: IViewController?)
+    func ifOkWith(_ userInput: String) -> Bool
     func calculatePrimeNumbers(from stringNumber: String)
 }
