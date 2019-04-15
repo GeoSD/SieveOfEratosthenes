@@ -13,14 +13,15 @@ class ViewController: UIViewController {
     @IBOutlet private weak var calculationButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private let iPresenter: IPresenter = Presenter()
+    private var iPresenter: IPresenter = Presenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        iPresenter.setIViewController(iViewController: self)
     }
     
-    func configureCollectionView() {
+    private func configureCollectionView() {
         collectionView.backgroundColor = .clear
         collectionView.register(UINib(nibName: String(describing: PrimeNumberCell.self), bundle: nil),
                                 forCellWithReuseIdentifier: "PrimeCell")
@@ -30,7 +31,7 @@ class ViewController: UIViewController {
     
     @IBAction private func calculationButtonTapped(_ sender: UIButton) {
         let userInput = inputTextField.text ?? ""
-        iPresenter.checkInputed(numberFrom: userInput)
+        iPresenter.calculatePrimeNumbers(from: userInput)
     }
 }
 
@@ -58,4 +59,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UITextFieldDelegate {
     
+}
+
+extension ViewController: IViewController {
+    func reloadCollectionView() {
+        collectionView.reloadData()
+    }
 }
