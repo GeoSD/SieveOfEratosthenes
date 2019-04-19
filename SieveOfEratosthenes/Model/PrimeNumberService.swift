@@ -9,7 +9,7 @@
 import Foundation
 
 class PrimeNumberService {
-    func calculatePrimeNumbers(_ inputNumber: Int, result: ([PrimeNumber]) -> Void) {
+    func calculatePrimeNumbers(_ inputNumber: Int, result: @escaping ([PrimeNumber]) -> Void) {
         var sievedNumbers = Array(0...inputNumber)
         
         var primeNumbers: [PrimeNumber] = []
@@ -32,8 +32,6 @@ class PrimeNumberService {
                 primeNumbers.append(PrimeNumber(primeNumber: number))
             }
         }
-//        print(sievedNumbers)
-//        print(primeNumbers)
         result(primeNumbers)
     }
 }

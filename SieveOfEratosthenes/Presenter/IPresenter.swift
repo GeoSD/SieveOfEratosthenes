@@ -9,7 +9,10 @@
 import UIKit
 
 protocol IPresenter: AnyObject {
-    func setIViewController(iViewController: IViewController?)
-    func ifOkWith(_ userInput: String) -> Bool
+    func set(view: IViewController?)
+    func okWith(_ userInput: String) -> Bool
     func calculatePrimeNumbers(from stringNumber: String)
+    
+    func numberOfItems() -> Int
+    func item(for indexPath: IndexPath) -> PrimeNumber
 }

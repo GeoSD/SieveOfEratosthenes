@@ -14,13 +14,15 @@ class Presenter {
     private let primeNumberService: PrimeNumberService
     private var sievedNumbers: [Int] = []
     
+    private var primeNumbers: [PrimeNumber] = []
+    
     init(primeNumberService: PrimeNumberService) {
         self.primeNumberService = primeNumberService
     }
 }
 
 extension Presenter: IPresenter {
-    func ifOkWith(_ userInput: String) -> Bool {
+    func okWith(_ userInput: String) -> Bool {
         guard let checkedNumber = Int(userInput) else {
             return false
         }
@@ -30,14 +32,23 @@ extension Presenter: IPresenter {
         return true
     }
     
-    func setIViewController(iViewController: IViewController?) {
-        self.iViewController = iViewController
+    func set(view: IViewController?) {
+        self.iViewController = view
     }
     
     func calculatePrimeNumbers(from stringNumber: String) {
         guard let inputNumber = Int(stringNumber) else { return }
-        primeNumberService.calculatePrimeNumbers(inputNumber) { (primeNumbers) in
-            iViewController?.setNumbersWith(primeNumbers: primeNumbers)
+        primeNumberService.calculatePrimeNumbers(inputNumber) { [weak self] (primeNumbers) in
+            self?.primeNumbers = primeNumbers
+            self?.iViewController?.reloadView()
         }
+    }
+    
+    func numberOfItems() -> Int {
+        return primeNumbers.count
+    }
+    
+    func item(for indexPath: IndexPath) -> PrimeNumber {
+        return primeNumbers[indexPath.row]
     }
 }

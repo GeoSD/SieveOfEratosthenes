@@ -13,14 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet private weak var calculationButton: UIButton!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    private var iPresenter: IPresenter = Presenter(primeNumberService: PrimeNumberService())
-    private var primeNumbers: [PrimeNumber] = []
+    private var presenter: IPresenter = Presenter(primeNumberService: PrimeNumberService())
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inputTextField.delegate = self
         configureCollectionView()
-        iPresenter.setIViewController(iViewController: self)
+        presenter.set(view: self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -41,8 +41,8 @@ class ViewController: UIViewController {
     
     @IBAction private func calculationButtonTapped(_ sender: UIButton) {
         let userInput = inputTextField.text ?? ""
-        if iPresenter.ifOkWith(userInput) {
-            iPresenter.calculatePrimeNumbers(from: userInput)
+        if presenter.okWith(userInput) {
+            presenter.calculatePrimeNumbers(from: userInput)
         } else {
             showAlert()
             return
@@ -52,13 +52,18 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return primeNumbers.count
+        return presenter.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PrimeCell", for: indexPath) as! PrimeNumberCell
-        let index = indexPath.row
-        cell.configureCell(with: primeNumbers[index])
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PrimeCell", for: indexPath) as? PrimeNumberCell else {
+            assertionFailure("Can't cast to PrimeCell.")
+            return UICollectionViewCell()
+        }
+        
+        let item = presenter.item(for: indexPath)
+        cell.configureCell(with: item)
+        
         return cell
     }
 }
@@ -68,8 +73,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let index = indexPath.row
-        let stringNumber = "\(primeNumbers[index])"
+        let item = presenter.item(for: indexPath)
+        let stringNumber = "\(item)"
         let someStringSize = stringNumber.size(withAttributes: nil)
         let calculatedWidth = someStringSize.width + 20
         let calculatedHeight = someStringSize.height + 20
@@ -82,8 +87,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UITextFieldDelegate { }
 
 extension ViewController: IViewController {
-    func setNumbersWith(primeNumbers: [PrimeNumber]) {
-        self.primeNumbers = primeNumbers
+    func reloadView() {
         collectionView.reloadData()
     }
 }
@@ -92,7 +96,6 @@ extension ViewController {
     func showAlert() {
         let alert = UIAlertController(title: "", message: "Вы ввели неподходящее число! Введите число больше 1..", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.primeNumbers = []
             self.inputTextField.text = ""
             self.collectionView.reloadData()
         }
